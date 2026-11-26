@@ -139,9 +139,15 @@
     return location.origin + location.pathname;
   }
 
-  /* slim settings for links: drop heavy fields until it fits in a QR */
-  function slimSettingsForLink() {
+  /* slim settings for links. minimal=true for QR codes: tracking only needs
+     name/colors/lang/prefix/avg — dropping the rest keeps the QR scannable. */
+  function slimSettingsForLink(minimal) {
     var s = Q.sanitizeSettings(settings);
+    if (minimal) {
+      s.logoDataUrl = ''; s.services = [];
+      s.welcome = ''; s.announcement = ''; s.ticketNote = '';
+      return Q.encodeSettingsToken(s);
+    }
     var tries = [
       { logo: true, svc: true, extra: true },
       { logo: false, svc: true, extra: true },
@@ -160,12 +166,12 @@
   }
 
   function trackerUrl(ticketNum) {
-    var u = baseUrl() + '#/ticket?cfg=' + slimSettingsForLink() + '&s=' + Q.encodeSnapshot(state, settings, Date.now());
+    var u = baseUrl() + '#/ticket?cfg=' + slimSettingsForLink(true) + '&s=' + Q.encodeSnapshot(state, settings, Date.now());
     if (ticketNum != null) u += '&n=' + ticketNum;
     return u;
   }
   function kioskUrl() {
-    return baseUrl() + '#/take?cfg=' + slimSettingsForLink();
+    return baseUrl() + '#/take?cfg=' + slimSettingsForLink(false);
   }
 
   /* ---------------- sound ---------------- */
