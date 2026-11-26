@@ -15,6 +15,15 @@
 
 ---
 
+## Screenshots
+
+Captured from the live site (https://yousefkhames.github.io/dawr/).
+
+<p>
+  <img src="docs/screenshots/live-desktop.png" alt="dawr desktop view" width="640">
+  <img src="docs/screenshots/live-mobile.png" alt="dawr mobile view" width="200">
+</p>
+
 ## The idea · الفكرة
 
 A clinic, lab or office runs the whole queue from **one device** (the reception phone, tablet or PC). Customers take a number on that device at the door, watch a big waiting screen, and track their turn on their own phones through a **QR code / link that carries a snapshot of the queue** — no backend, no accounts, no subscription.
