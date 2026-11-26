@@ -1,5 +1,5 @@
 /* Dawr service worker: app shell precached; audio chimes are cached the first time they play. */
-const CACHE = 'dawr-v1';
+const CACHE = 'dawr-v2';
 const ASSETS = [
   './',
   'index.html',
