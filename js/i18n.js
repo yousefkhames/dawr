@@ -41,6 +41,7 @@ window.DAWR_I18N = {
     ticketUnknown: 'هذا الرقم غير موجود في آخر تحديث',
     lastUpdated: 'آخر تحديث',
     rescanHint: 'للتحديث: امسح رمز QR من شاشة الانتظار مرة أخرى',
+    staleWarn: 'هذا التحديث قديم — الطابور غالباً اتحرك. امسح رمز QR الحالي من الشاشة.',
     liveHere: 'متصل مباشرة بهذا الجهاز',
     // staff
     staffTitle: 'لوحة التحكم',
@@ -168,6 +169,7 @@ window.DAWR_I18N = {
     ticketUnknown: 'Number not found in the latest update',
     lastUpdated: 'Last updated',
     rescanHint: 'To refresh: scan the QR on the waiting screen again',
+    staleWarn: 'This update is old — the queue has likely moved. Scan the current QR on the screen.',
     liveHere: 'Live on this device',
     staffTitle: 'Control panel',
     callNext: 'Call next',

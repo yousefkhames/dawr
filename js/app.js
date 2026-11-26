@@ -407,7 +407,9 @@
       } else {
         statusHtml = servingHtml;
       }
-      statusHtml += '<p class="muted center mt">' + t('lastUpdated') + ': ' + fmtTime(liveNow ? Date.now() : snap.t) + ' · ' + (liveNow ? t('liveHere') : t('rescanHint')) + '</p>';
+      var stale = !liveNow && snap.t && (Date.now() - snap.t > 15 * 60 * 1000);
+      statusHtml += '<p class="muted center mt">' + t('lastUpdated') + ': ' + fmtTime(liveNow ? Date.now() : snap.t) + ' · ' + (liveNow ? t('liveHere') : t('rescanHint')) + '</p>' +
+        (stale ? '<div class="callout center" style="border-color:var(--danger)">' + t('staleWarn') + '</div>' : '');
     }
 
     return shell(
