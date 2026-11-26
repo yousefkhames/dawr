@@ -264,7 +264,9 @@
     function fallback() {
       var ta = document.createElement('textarea');
       ta.value = text; document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); ok(); } catch (e) { toast(t('copy') + ': ' + text.slice(0, 40)); }
+      var done = false;
+      try { done = document.execCommand('copy'); } catch (e) {}
+      if (done) ok(); else toast(t('copy') + ': ' + text.slice(0, 40));
       document.body.removeChild(ta);
     }
   }
@@ -873,4 +875,7 @@
   }, 30000);
 
   render();
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
 })();

@@ -76,3 +76,8 @@ Open `#/staff` for the control panel, `#/take` for the kiosk, `#/display` for th
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## Round 2 review notes
+- Added a service worker: the app shell and the self-hosted fonts are precached, and chime audio is cached the first time it plays, so the display screen keeps working offline after one visit.
+- The copy fallback now reports a failure instead of saying "copied".
+- Limit: a queue lives in the browser (and share links), there is no server, so other devices only see what is in the shared link/QR.
