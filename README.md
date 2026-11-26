@@ -54,7 +54,8 @@ A clinic, lab or office runs the whole queue from **one device** (the reception 
 - **No true cross-device push.** Without a server, a customer phone cannot receive live updates by itself — it refreshes by rescanning the QR (the estimate counts down locally in between). For most walk-in queues this is enough; a hosted backend would be needed for remote booking.
 - **Numbers are issued on the business device.** Two customers can't take numbers from their own phones simultaneously (numbers would collide); they track on their phones, they take at the door.
 - **Data lives in the browser** of the business device (`localStorage`). Clearing site data resets the queue. Export CSV/JSON for backup.
-- Speech announcements depend on the browser's voices; Arabic voice quality varies by device.
+- **Announcements are recorded clips**, bundled in `audio/` (Arabic and English, numbers 0 to 999, letters A-Z and Arabic letters for the ticket prefix), so every phone sounds the same. Clips were generated once with Microsoft neural text-to-speech (`tools/gen-audio.py`) and are not a human recording. Ticket numbers above 999, or a prefix with other symbols, fall back to the browser's own voice.
+- Fonts (Tajawal, Chivo Mono) are bundled in `fonts/`, so the app makes no third-party requests.
 
 ## Tech · التقنيات
 

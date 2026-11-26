@@ -192,8 +192,29 @@
       o.start(); o.stop(audioCtx.currentTime + 0.65);
     } catch (e) {}
   }
-  function speak(num) {
-    if (localStorage.getItem(LS_SOUND) === 'off') return;
+  /* Announcements use bundled recorded clips (audio/<lang>/*.mp3), so the voice is
+     the same on every phone. The browser's speech voice is only a fallback. */
+  var speakToken = 0, curAudio = null;
+  function clipsFor(prefix, num, lg) {
+    var out = ['call'], n = parseInt(num, 10);
+    if (!(n >= 0 && n <= 999)) return null;
+    for (var i = 0; i < prefix.length; i++) {
+      var ch = prefix.charAt(i).toUpperCase();
+      if (/[A-Z\u0621-\u064A]/.test(ch)) out.push('L' + ch);
+      else if (/[0-9]/.test(ch)) out.push(ch === '0' ? 'zero' : 'n' + ch);
+      else if (/\s/.test(ch) || ch === '-') continue;
+      else return null;
+    }
+    if (n === 0) out.push('zero');
+    else {
+      var h = Math.floor(n / 100) * 100, r = n % 100;
+      if (h) out.push('n' + h);
+      if (r) out.push((h && lg === 'ar' ? 'a' : 'n') + r);
+    }
+    out.push('go');
+    return out;
+  }
+  function speechFallback(num) {
     try {
       if (!('speechSynthesis' in window)) return;
       var u = new SpeechSynthesisUtterance(t('servingNowCall') + ' ' + (S().prefix || '') + num + ', ' + t('pleaseProceed'));
@@ -201,6 +222,23 @@
       speechSynthesis.cancel();
       speechSynthesis.speak(u);
     } catch (e) {}
+  }
+  function speak(num) {
+    if (localStorage.getItem(LS_SOUND) === 'off') return;
+    var list = clipsFor(S().prefix || '', num, lang);
+    if (!list || typeof Audio === 'undefined') return speechFallback(num);
+    var token = ++speakToken, i = 0;
+    if (curAudio) { try { curAudio.pause(); } catch (e) {} }
+    window.__dawrSpoken = list.join(' ');
+    function next() {
+      if (token !== speakToken || i >= list.length) return;
+      var a = new Audio('audio/' + lang + '/' + list[i++] + '.mp3');
+      curAudio = a;
+      a.onended = next;
+      a.onerror = function () { if (token === speakToken && i === 1) speechFallback(num); else next(); };
+      var p = a.play(); if (p && p.catch) p.catch(function () { if (token === speakToken && i === 1) speechFallback(num); });
+    }
+    next();
   }
 
   /* ---------------- qr ---------------- */
