@@ -1,0 +1,12 @@
+{
+  "name": "dawr",
+  "version": "1.0.0",
+  "description": "White-label smart queue ticket system for clinics, labs and offices. Static, no server.",
+  "scripts": {
+    "test": "node --test tests/queue.test.cjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer-core": "^25.19.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Dawr — Smart Queue",
+  "short_name": "Dawr",
+  "description": "White-label smart queue ticket system. No server needed.",
+  "start_url": "./index.html#/take",
+  "display": "standalone",
+  "background_color": "#faf6ee",
+  "theme_color": "#0f766e",
+  "icons": [
+    { "src": "assets/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

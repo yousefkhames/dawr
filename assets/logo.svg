@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <rect width="96" height="96" rx="22" fill="#0f766e"/>
+  <path d="M20 32a6 6 0 0 1 6-6h44a6 6 0 0 1 6 6v10a7 7 0 1 0 0 12v10a6 6 0 0 1-6 6H26a6 6 0 0 1-6-6V54a7 7 0 1 0 0-12z" fill="#faf6ee"/>
+  <path d="M40 26v8m0 6v6m0 6v6m0 6v12" stroke="#0f766e" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 6" fill="none"/>
+  <text x="58" y="58" font-family="Tahoma, Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f766e" text-anchor="middle">دور</text>
+  <circle cx="70" cy="32" r="5" fill="#f59e0b"/>
+</svg>
