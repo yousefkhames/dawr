@@ -17,7 +17,7 @@
 
 ## Screenshots
 
-Captured from the live site (https://yousefkhames.github.io/dawr/).
+Captured from the live site (https://yousefkhames.github.io/dawr/) with sample demo content entered for the screenshot. It is not real user data.
 
 <p>
   <img src="docs/screenshots/live-desktop.png" alt="dawr desktop view" width="640">
