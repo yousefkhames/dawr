@@ -1,3 +1,21 @@
+<div align="center">
+
+<img src="assets/yk-logo.svg" width="64" alt="YK">
+
+# dawr
+
+**dawr** · demo / portfolio project
+
+**تذاكر دور ذكية** · مشروع تجريبي للعرض
+
+[Live demo](https://yousefkhames.github.io/dawr/) · By Yousef Khames · من تطوير يوسف خميس
+
+<img src="assets/og.png" width="640" alt="dawr preview">
+
+</div>
+
+---
+
 # dawr · دَور
 
 A white-label queue ticket kit for clinics, pharmacies and shops. Reception issues numbered tickets per service or doctor, calls the next number, and can show "now serving" on a TV or tablet. Each ticket has a QR link that tells the customer how many people were ahead when the link was made. Arabic RTL and English LTR. Static HTML, CSS and JavaScript. No build, account, server, API or payment.
